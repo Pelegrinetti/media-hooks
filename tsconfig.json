@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "target": "ES2015",
+    "module": "ESNext",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node"
+  },
+  "include": ["./jest-setup.ts"],
+  "exclude": ["./*/**.test.tsx"],
+  "files": ["./src/index.ts"]
+}
