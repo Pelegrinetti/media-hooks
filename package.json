@@ -9,7 +9,9 @@
   "scripts": {
     "build": "babel src --out-dir dist --extensions '.ts' --ignore 'src/**/*.test.ts,src/**/*.test.tsx'",
     "test": "jest",
-    "test-watch": "jest --watch"
+    "test-watch": "jest --watch",
+    "lint": "eslint --fix --ext .ts,.tsx src/**",
+    "format": "prettier --write src"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
