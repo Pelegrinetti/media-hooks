@@ -2,7 +2,7 @@ import React from 'react';
 
 interface IMediaContext {
   [key: string]: boolean;
-  default?: boolean | null;
+  default?: boolean | undefined;
 }
 interface Props {
   patterns: {
