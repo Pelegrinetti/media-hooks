@@ -1,42 +1,16 @@
 import React from 'react';
 
-interface IMediaContext {
-  [key: string]: boolean;
-  default?: boolean | undefined;
+interface IPatterns {
+  [key: string]: string;
 }
 interface Props {
-  patterns: {
-    [key: string]: string;
-  };
-  defaultMatch?: boolean | undefined;
+  patterns: IPatterns;
 }
 
-export const MediaContext = React.createContext<IMediaContext>({});
+export const MediaContext = React.createContext<IPatterns>({});
 
-const MediaProvider: React.FC<Props> = ({
-  children,
-  patterns,
-  defaultMatch
-}) => {
-  const matchesWithPatterns: IMediaContext = {
-    default: defaultMatch
-  };
-
-  if (typeof window !== 'undefined' && window.matchMedia) {
-    Object.keys(patterns).forEach((pattern) => {
-      matchesWithPatterns[pattern] = window.matchMedia(
-        patterns[pattern]
-      ).matches;
-    });
-  }
-
-  const memoizedMatches = React.useMemo(() => matchesWithPatterns, [patterns]);
-
-  return (
-    <MediaContext.Provider value={memoizedMatches}>
-      {children}
-    </MediaContext.Provider>
-  );
-};
+const MediaProvider: React.FC<Props> = ({ children, patterns }) => (
+  <MediaContext.Provider value={patterns}>{children}</MediaContext.Provider>
+);
 
 export default MediaProvider;
