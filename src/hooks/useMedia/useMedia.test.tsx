@@ -40,7 +40,6 @@ describe('useMedia()', () => {
           mobile: '(maxWidth: 768px)',
           desktop: '(minWidth: 1200px)'
         }}
-        defaultMatch={defaultMatch}
       >
         {children}
       </MediaProvider>
@@ -71,12 +70,15 @@ describe('useMedia()', () => {
 
   it('should return default when matchMedia API is unavailable', () => {
     const wrapper = ({ children }) => (
-      <MediaProvider patterns={{ mobile: '(minWidth: 768px)' }} defaultMatch>
+      <MediaProvider patterns={{ mobile: '(minWidth: 768px)' }}>
         {children}
       </MediaProvider>
     );
 
-    const { result } = renderHook(() => useMedia('desktop'), { wrapper });
+    const { result } = renderHook(
+      () => useMedia('desktop', { default: true }),
+      { wrapper }
+    );
 
     expect(result.current).toBe(true);
   });

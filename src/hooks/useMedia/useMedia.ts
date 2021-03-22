@@ -1,12 +1,27 @@
 import { useContext } from 'react';
 import { MediaContext } from '../../MediaProvider';
 
-const useMedia = (pattern: string): boolean | null => {
-  const context = useContext(MediaContext);
+interface IMediaConfig {
+  default: boolean;
+}
 
-  if (Object.keys(context).includes(pattern)) return context[pattern];
+const useMedia = (
+  pattern: string,
+  config?: IMediaConfig
+): boolean | undefined => {
+  const patterns = useContext(MediaContext);
 
-  return context.default;
+  if (
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    Object.keys(patterns).includes(pattern)
+  ) {
+    return window.matchMedia(patterns[pattern]).matches;
+  }
+
+  if (typeof config?.default !== 'undefined') return config.default;
+
+  return undefined;
 };
 
 export default useMedia;
