@@ -18,6 +18,7 @@ module.exports = {
     'import/extensions': 'off',
     'react/prop-types': 'off',
     'no-use-before-define': 'off',
+    'operator-linebreak': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'react/jsx-filename-extension': [
       1,
