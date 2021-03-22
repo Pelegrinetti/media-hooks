@@ -22,7 +22,7 @@ const MediaProvider: React.FC<Props> = ({
     default: defaultMatch
   };
 
-  if (typeof window !== 'undefined') {
+  if (typeof window !== 'undefined' && window.matchMedia) {
     Object.keys(patterns).forEach((pattern) => {
       matchesWithPatterns[pattern] = window.matchMedia(
         patterns[pattern]
