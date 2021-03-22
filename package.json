@@ -19,7 +19,7 @@
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
       "yarn lint",
-      "yarn test",
+      "yarn test --findRelatedTests",
       "yarn format"
     ]
   },
