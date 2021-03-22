@@ -1,23 +1,25 @@
 import React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
+import setupMatchMedia from '../../__tests__/setupMatchMedia';
 import MediaProvider from '../../MediaProvider';
 import useMedia from './useMedia';
 
+afterEach(() => {
+  window.matchMedia = undefined;
+});
+
 describe('useMedia()', () => {
   it('should matches with mobile', () => {
-    window.matchMedia = (query) => ({
-      matches: true,
-      media: query,
-      onchange: null,
-      addListener: jest.fn(),
-      removeListener: jest.fn(),
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn()
-    });
+    const mobileQuery = '(maxWidth: 768px)';
+    setupMatchMedia(mobileQuery);
 
     const wrapper = ({ children }) => (
-      <MediaProvider patterns={{ mobile: '(minWidth: 768px)' }}>
+      <MediaProvider
+        patterns={{
+          mobile: mobileQuery,
+          desktop: '(minWidth: 1024px)'
+        }}
+      >
         {children}
       </MediaProvider>
     );
@@ -28,19 +30,18 @@ describe('useMedia()', () => {
   });
 
   it('should return default value', () => {
-    window.matchMedia = (query) => ({
-      matches: false,
-      media: query,
-      onchange: null,
-      addListener: jest.fn(),
-      removeListener: jest.fn(),
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn()
-    });
+    const defaultMatch = true;
+
+    setupMatchMedia('(maxWidth: 1024px)', { force: defaultMatch });
 
     const wrapper = ({ children }) => (
-      <MediaProvider patterns={{ mobile: '(minWidth: 768px)' }} defaultMatch>
+      <MediaProvider
+        patterns={{
+          mobile: '(maxWidth: 768px)',
+          desktop: '(minWidth: 1200px)'
+        }}
+        defaultMatch={defaultMatch}
+      >
         {children}
       </MediaProvider>
     );
@@ -51,19 +52,14 @@ describe('useMedia()', () => {
   });
 
   it('should return undefined when pattern and default is not provided', () => {
-    window.matchMedia = (query) => ({
-      matches: false,
-      media: query,
-      onchange: null,
-      addListener: jest.fn(),
-      removeListener: jest.fn(),
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn()
-    });
+    setupMatchMedia('(minWidth: 768px)');
 
     const wrapper = ({ children }) => (
-      <MediaProvider patterns={{ mobile: '(minWidth: 768px)' }}>
+      <MediaProvider
+        patterns={{
+          mobile: '(minWidth: 768px)'
+        }}
+      >
         {children}
       </MediaProvider>
     );

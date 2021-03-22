@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import setupMatchMedia from '../__tests__/setupMatchMedia';
 import MediaProvider, { MediaContext } from './MediaProvider';
 
 const Component = () => {
@@ -26,21 +27,13 @@ describe('<MediaProvider />', () => {
   });
 
   it('should match mobile', () => {
-    window.matchMedia = (query) => ({
-      matches: true,
-      media: query,
-      onchange: null,
-      addListener: jest.fn(),
-      removeListener: jest.fn(),
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn()
-    });
+    setupMatchMedia('(maxWidth: 768px)');
 
     render(
       <MediaProvider
         patterns={{
-          mobile: '(maxWidth: 768px)'
+          mobile: '(maxWidth: 768px)',
+          desktop: '(minwidth:  1024px)'
         }}
       >
         <Component />
@@ -53,21 +46,13 @@ describe('<MediaProvider />', () => {
   });
 
   it('should match desktop', () => {
-    window.matchMedia = (query) => ({
-      matches: true,
-      media: query,
-      onchange: null,
-      addListener: jest.fn(),
-      removeListener: jest.fn(),
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn()
-    });
+    setupMatchMedia('(minWidth: 1024px)');
 
     render(
       <MediaProvider
         patterns={{
-          desktop: '(maxWidth: 768px)'
+          mobile: '(maxWidth: 768px)',
+          desktop: '(minWidth: 1024px)'
         }}
       >
         <Component />
