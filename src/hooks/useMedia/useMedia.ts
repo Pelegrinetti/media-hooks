@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { MediaContext } from '../../MediaProvider';
 
 interface IMediaConfig {
@@ -9,19 +9,29 @@ const useMedia = (
   pattern: string,
   config?: IMediaConfig
 ): boolean | undefined => {
+  const [matches, setMatches] = useState(config?.default);
   const patterns = useContext(MediaContext);
+  const setMatchesValue = () => {
+    if (
+      typeof window.matchMedia === 'function' &&
+      Object.keys(patterns).includes(pattern)
+    ) {
+      setMatches(window.matchMedia(patterns[pattern]).matches);
+    }
+  };
 
-  if (
-    typeof window !== 'undefined' &&
-    typeof window.matchMedia === 'function' &&
-    Object.keys(patterns).includes(pattern)
-  ) {
-    return window.matchMedia(patterns[pattern]).matches;
-  }
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    setMatchesValue();
 
-  if (typeof config?.default !== 'undefined') return config.default;
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', setMatchesValue);
 
-  return undefined;
+      return window.removeEventListener('resize', setMatchesValue);
+    }
+  }, []);
+
+  return matches;
 };
 
 export default useMedia;
