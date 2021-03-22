@@ -1,6 +1,5 @@
 import dts from 'rollup-plugin-dts';
 import esbuild from 'rollup-plugin-esbuild';
-import { uglify } from 'rollup-plugin-uglify';
 import pkg from './package.json';
 
 const bundle = (config) => ({
@@ -11,7 +10,7 @@ const bundle = (config) => ({
 
 export default [
   bundle({
-    plugins: [esbuild(), uglify()],
+    plugins: [esbuild()],
     output: [
       {
         file: pkg.main,

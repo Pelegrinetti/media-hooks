@@ -7,5 +7,5 @@ export default {
   bail: 1,
   clearMocks: true,
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)']
+  testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)']
 };
