@@ -15,6 +15,10 @@ const Component = () => {
   );
 };
 
+afterEach(() => {
+  window.matchMedia = undefined;
+});
+
 describe('<MediaProvider />', () => {
   it('should render children', () => {
     render(
