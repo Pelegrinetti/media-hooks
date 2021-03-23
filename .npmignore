@@ -1,5 +1,6 @@
 .git
 .husky
+.github
 logo.svg
 node_modules
 
