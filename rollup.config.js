@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import dts from 'rollup-plugin-dts';
 import esbuild from 'rollup-plugin-esbuild';
-import pkg from './package.json';
 
 const bundle = (config) => ({
   ...config,
@@ -25,7 +24,8 @@ export default [
   bundle({
     plugins: [dts()],
     output: {
-      file: pkg.typings,
+      dir: 'lib',
+      preserveModules: true,
       format: ' '
     }
   })
