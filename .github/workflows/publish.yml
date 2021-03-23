@@ -1,0 +1,33 @@
+name: Media Hooks CI/CD
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 14
+      - run: yarn install
+      - run: yarn test
+      
+  publish:
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org/
+      - name: Installing production dependencies.
+        run: yarn install --production
+      - name: Publishing package
+        run: yarn publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
