@@ -21,7 +21,7 @@ const useMedia = (pattern: string, config?: IMediaConfig): boolean | undefined =
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', setMatchesValue);
 
-      return window.removeEventListener('resize', setMatchesValue);
+      return () => window.removeEventListener('resize', setMatchesValue);
     }
   }, []);
 
