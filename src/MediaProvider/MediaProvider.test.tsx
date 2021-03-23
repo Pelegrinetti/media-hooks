@@ -24,8 +24,8 @@ describe('<MediaProvider />', () => {
     render(
       <MediaProvider
         patterns={{
-          mobile: '(maxWidth: 768px)',
-          desktop: '(minWidth: 1024px)'
+          mobile: '(max-width: 768px)',
+          desktop: '(min-width: 1024px)'
         }}
       >
         <Component />
@@ -38,8 +38,8 @@ describe('<MediaProvider />', () => {
 
     expect(spy).toReturnWith(
       expect.objectContaining({
-        mobile: '(maxWidth: 768px)',
-        desktop: '(minWidth: 1024px)'
+        mobile: '(max-width: 768px)',
+        desktop: '(min-width: 1024px)'
       })
     );
   });

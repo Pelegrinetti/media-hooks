@@ -10,14 +10,14 @@ afterEach(() => {
 
 describe('useMedia()', () => {
   it('should matches with mobile', () => {
-    const mobileQuery = '(maxWidth: 768px)';
+    const mobileQuery = '(max-width: 768px)';
     setupMatchMedia(mobileQuery);
 
     const wrapper = ({ children }) => (
       <MediaProvider
         patterns={{
           mobile: mobileQuery,
-          desktop: '(minWidth: 1024px)'
+          desktop: '(min-width: 1024px)'
         }}
       >
         {children}
@@ -32,13 +32,13 @@ describe('useMedia()', () => {
   it('should return default value', () => {
     const defaultMatch = true;
 
-    setupMatchMedia('(maxWidth: 1024px)', { force: defaultMatch });
+    setupMatchMedia('(max-width: 1024px)', { force: defaultMatch });
 
     const wrapper = ({ children }) => (
       <MediaProvider
         patterns={{
-          mobile: '(maxWidth: 768px)',
-          desktop: '(minWidth: 1200px)'
+          mobile: '(max-width: 768px)',
+          desktop: '(min-width: 1200px)'
         }}
       >
         {children}
@@ -51,12 +51,12 @@ describe('useMedia()', () => {
   });
 
   it('should return undefined when pattern and default is not provided', () => {
-    setupMatchMedia('(minWidth: 768px)');
+    setupMatchMedia('(min-width: 768px)');
 
     const wrapper = ({ children }) => (
       <MediaProvider
         patterns={{
-          mobile: '(minWidth: 768px)'
+          mobile: '(min-width: 768px)'
         }}
       >
         {children}
@@ -70,7 +70,7 @@ describe('useMedia()', () => {
 
   it('should return default when matchMedia API is unavailable', () => {
     const wrapper = ({ children }) => (
-      <MediaProvider patterns={{ mobile: '(minWidth: 768px)' }}>{children}</MediaProvider>
+      <MediaProvider patterns={{ mobile: '(min-width: 768px)' }}>{children}</MediaProvider>
     );
 
     const { result } = renderHook(() => useMedia('desktop', { default: true }), { wrapper });
@@ -80,7 +80,7 @@ describe('useMedia()', () => {
 
   it('should return undefined when matchMedia API is unavailable and default is not provided', () => {
     const wrapper = ({ children }) => (
-      <MediaProvider patterns={{ mobile: '(minWidth: 768px)' }}>{children}</MediaProvider>
+      <MediaProvider patterns={{ mobile: '(min-width: 768px)' }}>{children}</MediaProvider>
     );
 
     const { result } = renderHook(() => useMedia('desktop'), { wrapper });

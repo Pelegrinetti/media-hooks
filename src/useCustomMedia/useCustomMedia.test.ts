@@ -8,29 +8,29 @@ afterEach(() => {
 
 describe('useCustomMedia()', () => {
   it('should match with query', () => {
-    setupMatchMedia('(minWidth: 768px)');
+    setupMatchMedia('(min-width: 768px)');
 
-    const { result } = renderHook(() => useCustomMedia('(minWidth: 768px)'));
+    const { result } = renderHook(() => useCustomMedia('(min-width: 768px)'));
 
     expect(result.current).toBe(true);
   });
 
   it('should not match with query', () => {
-    setupMatchMedia('(maxWidth: 1023px)');
+    setupMatchMedia('(max-width: 1023px)');
 
-    const { result } = renderHook(() => useCustomMedia('(minWidth: 768px)'));
+    const { result } = renderHook(() => useCustomMedia('(min-width: 768px)'));
 
     expect(result.current).toBe(false);
   });
 
   it('should return undefined when matchMedia API is unavailable and default option is not provided', () => {
-    const { result } = renderHook(() => useCustomMedia('(minWidth: 768px)'));
+    const { result } = renderHook(() => useCustomMedia('(min-width: 768px)'));
 
     expect(result.current).toBe(undefined);
   });
 
   it('should return default value when is provided and matchMedia API in unavailable', () => {
-    const { result } = renderHook(() => useCustomMedia('(minWidth: 768px)', {
+    const { result } = renderHook(() => useCustomMedia('(min-width: 768px)', {
       default: true
     }));
 
