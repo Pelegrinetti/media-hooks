@@ -1,3 +1,5 @@
+[![Media Hooks CI/CD](https://github.com/Pelegrinetti/media-hooks/actions/workflows/publish.yml/badge.svg)](https://github.com/Pelegrinetti/media-hooks/actions/workflows/publish.yml)
+
 <div align="center">
   <img src="https://github.com/Pelegrinetti/media-hooks/blob/master/logo.svg" alt="Logo do aplicativo" />
 
