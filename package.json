@@ -8,6 +8,7 @@
   "author": "Matheus Pelegrinetti",
   "license": "MIT",
   "scripts": {
+    "postversion": "git push --follow-tags",
     "prebuild": "rimraf lib",
     "prepublishOnly": "yarn build",
     "build": "rollup -c",
