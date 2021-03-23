@@ -15,7 +15,8 @@ export default [
     output: [
       {
         dir: 'lib',
-        format: 'es',
+        format: 'cjs',
+        exports: 'named',
         preserveModules: true,
         sourcemap: true
       }
