@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import dts from 'rollup-plugin-dts';
 import esbuild from 'rollup-plugin-esbuild';
 import pkg from './package.json';
@@ -13,13 +14,9 @@ export default [
     plugins: [esbuild()],
     output: [
       {
-        file: pkg.main,
-        format: 'cjs',
-        sourcemap: true
-      },
-      {
-        file: pkg.module,
+        dir: 'lib',
         format: 'es',
+        preserveModules: true,
         sourcemap: true
       }
     ]
