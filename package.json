@@ -8,6 +8,7 @@
   "author": "Matheus Pelegrinetti",
   "license": "MIT",
   "scripts": {
+    "prebuild": "rimraf lib",
     "build": "rollup -c",
     "test": "jest",
     "test-watch": "jest --watch",
@@ -51,6 +52,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "regenerator-runtime": "^0.13.7",
+    "rimraf": "^3.0.2",
     "rollup": "^2.42.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-dts": "^3.0.1",

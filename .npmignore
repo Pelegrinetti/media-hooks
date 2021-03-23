@@ -1,0 +1,26 @@
+.husky
+
+# Dependencies
+node_modules
+
+# Source
+src
+
+# Ignored
+.gitignore
+.npmignore
+
+# Config
+.babelrc
+.editorconfig
+.eslintrc.js
+.prettierrc
+jest.config.ts
+jest.setup.ts
+logo.svg
+rollup.config.js
+tsconfig.json
+
+# Yarn
+yarn-error.log
+yarn.lock
