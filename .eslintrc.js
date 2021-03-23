@@ -20,15 +20,10 @@ module.exports = {
     'no-use-before-define': 'off',
     'operator-linebreak': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
-    'react/jsx-filename-extension': [
-      1,
-      { extensions: ['.js', '.jsx', '.tsx'] }
-    ],
-    'import/no-extraneous-dependencies': [
-      'error',
-      { devDependencies: ['**/*.test.ts', '**/*.test.tsx'] }
-    ],
-    'comma-dangle': ['error', 'never']
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx'] }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.ts', '**/*.test.tsx'] }],
+    'comma-dangle': ['error', 'never'],
+    'max-len': ['error', { code: 120 }]
   },
   settings: {
     'import/resolver': {

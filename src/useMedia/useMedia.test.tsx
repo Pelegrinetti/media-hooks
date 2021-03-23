@@ -1,7 +1,7 @@
 import React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
-import setupMatchMedia from '../../__tests__/setupMatchMedia';
-import MediaProvider from '../../MediaProvider';
+import setupMatchMedia from '../__tests__/setupMatchMedia';
+import MediaProvider from '../MediaProvider';
 import useMedia from './useMedia';
 
 afterEach(() => {
@@ -70,24 +70,17 @@ describe('useMedia()', () => {
 
   it('should return default when matchMedia API is unavailable', () => {
     const wrapper = ({ children }) => (
-      <MediaProvider patterns={{ mobile: '(minWidth: 768px)' }}>
-        {children}
-      </MediaProvider>
+      <MediaProvider patterns={{ mobile: '(minWidth: 768px)' }}>{children}</MediaProvider>
     );
 
-    const { result } = renderHook(
-      () => useMedia('desktop', { default: true }),
-      { wrapper }
-    );
+    const { result } = renderHook(() => useMedia('desktop', { default: true }), { wrapper });
 
     expect(result.current).toBe(true);
   });
 
   it('should return undefined when matchMedia API is unavailable and default is not provided', () => {
     const wrapper = ({ children }) => (
-      <MediaProvider patterns={{ mobile: '(minWidth: 768px)' }}>
-        {children}
-      </MediaProvider>
+      <MediaProvider patterns={{ mobile: '(minWidth: 768px)' }}>{children}</MediaProvider>
     );
 
     const { result } = renderHook(() => useMedia('desktop'), { wrapper });

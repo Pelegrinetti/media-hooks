@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "description": "Media API using Hooks",
   "main": "lib/index.js",
-  "module": "lib/index.mjs",
   "typings": "lib/index.d.ts",
   "repository": "https://github.com/Pelegrinetti/media-hooks",
   "author": "Matheus Pelegrinetti",
