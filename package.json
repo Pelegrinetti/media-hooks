@@ -9,6 +9,7 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf lib",
+    "prepublish": "yarn build",
     "build": "rollup -c",
     "test": "jest",
     "test-watch": "jest --watch",

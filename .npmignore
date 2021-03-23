@@ -1,26 +1,25 @@
+.git
 .husky
-
-# Dependencies
+logo.svg
 node_modules
 
-# Source
-src
-
-# Ignored
+# Ignores
 .gitignore
 .npmignore
 
-# Config
+# Configs
 .babelrc
 .editorconfig
 .eslintrc.js
 .prettierrc
-jest.config.ts
 jest.setup.ts
-logo.svg
+jest.config.ts
 rollup.config.js
 tsconfig.json
 
-# Yarn
+# Source
+src
+
+# Yarn generated
 yarn-error.log
 yarn.lock
