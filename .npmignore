@@ -3,6 +3,7 @@
 .github
 logo.svg
 node_modules
+README.md
 
 # Ignores
 .gitignore
