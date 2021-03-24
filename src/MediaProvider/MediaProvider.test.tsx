@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import MediaProvider, { MediaContext } from './MediaProvider';
+import MediaProvider, { MediaContext } from './index';
 
 describe('<MediaProvider />', () => {
   it('should render children', () => {

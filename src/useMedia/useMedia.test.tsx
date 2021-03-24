@@ -2,7 +2,7 @@ import React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import setupMatchMedia from '../__tests__/setupMatchMedia';
 import MediaProvider from '../MediaProvider';
-import useMedia from './useMedia';
+import useMedia from './index';
 
 afterEach(() => {
   window.matchMedia = undefined;

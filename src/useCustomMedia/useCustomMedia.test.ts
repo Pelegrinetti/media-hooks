@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import setupMatchMedia from '../__tests__/setupMatchMedia';
-import useCustomMedia from './useCustomMedia';
+import useCustomMedia from './index';
 
 afterEach(() => {
   window.matchMedia = undefined;
