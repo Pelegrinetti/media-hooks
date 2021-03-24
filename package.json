@@ -7,6 +7,14 @@
   "repository": "https://github.com/Pelegrinetti/media-hooks",
   "author": "Matheus Pelegrinetti",
   "license": "MIT",
+  "keywords": [
+    "media-hooks",
+    "matchMedia",
+    "react media",
+    "media api",
+    "media api hooks",
+    "hooks"
+  ],
   "scripts": {
     "postversion": "git push --follow-tags",
     "prebuild": "rimraf lib",
