@@ -19,7 +19,7 @@ const useCustomMedia = (query: string, config?: ICustomMediaConfig): boolean | u
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', setMatchesValue);
 
-      return window.removeEventListener('resize', setMatchesValue);
+      return () => window.removeEventListener('resize', setMatchesValue);
     }
   }, []);
 
