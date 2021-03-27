@@ -18,6 +18,10 @@ yarn add media-hooks
 npm install media-hooks
 ```
 
+## Docs: 
+- [Definitions](https://github.com/Pelegrinetti/media-hooks/blob/master/docs/DEFINITION.md);
+- [How to use](https://github.com/Pelegrinetti/media-hooks/blob/master/docs/HOW_TO_USE.md);
+
 <hr />
 
 MIT License
