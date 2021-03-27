@@ -31,6 +31,9 @@
       "yarn lint",
       "yarn test --findRelatedTests",
       "yarn format"
+    ],
+    "*.md": [
+      "yarn format"
     ]
   },
   "peerDependencies": {
