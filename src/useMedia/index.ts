@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
 import { MediaContext } from '../MediaProvider';
+import objectToQuery from '../utils/objectToQuery';
 
 interface IMediaConfig {
   default: boolean;
@@ -10,7 +11,17 @@ const useMedia = (pattern: string, config?: IMediaConfig): boolean | undefined =
   const patterns = useContext(MediaContext);
   const setMatchesValue = () => {
     if (typeof window.matchMedia === 'function' && Object.keys(patterns).includes(pattern)) {
-      setMatches(window.matchMedia(patterns[pattern]).matches);
+      const query = patterns[pattern];
+
+      if (typeof query === 'string') {
+        setMatches(window.matchMedia(query).matches);
+
+        return;
+      }
+
+      const queryAsString = objectToQuery(query);
+
+      setMatches(window.matchMedia(queryAsString).matches);
     }
   };
 
