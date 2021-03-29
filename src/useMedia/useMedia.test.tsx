@@ -87,4 +87,66 @@ describe('useMedia()', () => {
 
     expect(result.current).toBe(undefined);
   });
+
+  it('should accept an object in pattern', () => {
+    setupMatchMedia('(min-width: 768px)');
+
+    const wrapper = ({ children }) => (
+      <MediaProvider patterns={{
+        mobile: {
+          minWidth: 768
+        }
+      }}
+      >
+        {children}
+
+      </MediaProvider>
+    );
+
+    const { result } = renderHook(() => useMedia('mobile'), { wrapper });
+
+    expect(result.current).toBe(true);
+  });
+
+  it('should match query with operator', () => {
+    setupMatchMedia('(min-width: 769px) and (max-width: 1023px)');
+
+    const wrapper = ({ children }) => (
+      <MediaProvider patterns={{
+        tablet: {
+          minWidth: 769,
+          operator: 'and',
+          maxWidth: 1023
+        }
+      }}
+      >
+        {children}
+      </MediaProvider>
+    );
+
+    const { result } = renderHook(() => useMedia('tablet'), { wrapper });
+
+    expect(result.current).toBe(true);
+  });
+
+  it('should not match when pattern is an object and query is wrong', () => {
+    setupMatchMedia('(min-width: 769px) and (max-width: 1023px)');
+
+    const wrapper = ({ children }) => (
+      <MediaProvider patterns={{
+        tablet: {
+          minWidth: 1000,
+          operator: 'or',
+          maxWidth: 2000
+        }
+      }}
+      >
+        {children}
+      </MediaProvider>
+    );
+
+    const { result } = renderHook(() => useMedia('tablet'), { wrapper });
+
+    expect(result.current).toBe(false);
+  });
 });
