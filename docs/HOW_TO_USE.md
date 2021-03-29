@@ -2,7 +2,7 @@
 Media hooks provides two ways to use.
 
 ### First way:
-Use provider with patterns.
+Use provider with patterns. Current support one operator (AND | OR).
 
 _App.js_
 ```js
@@ -10,9 +10,9 @@ import MediaProvider from 'media-hooks';
 
 const App = () => {
   const patterns = {
-    mobile: '(max-width: 768px)',
-    tablet: '(min-width: 769px) and (max-width: 1023px)',
-    desktop: '(min-width: 1024px)'
+    mobile: '(max-width: 768px)', // or { minWidth: 768 }
+    tablet: '(min-width: 769px) and (max-width: 1023px)', // or { minWidth: 769, operator: 'and', maxWidth: 1023 }
+    desktop: '(min-width: 1024px)' // or { maxWidth: 1024 }
   }
   
   return (
