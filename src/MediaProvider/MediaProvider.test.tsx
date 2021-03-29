@@ -25,6 +25,11 @@ describe('<MediaProvider />', () => {
       <MediaProvider
         patterns={{
           mobile: '(max-width: 768px)',
+          tablet: {
+            minWidth: 769,
+            operator: 'and',
+            maxWidth: 1023
+          },
           desktop: '(min-width: 1024px)'
         }}
       >
@@ -39,6 +44,11 @@ describe('<MediaProvider />', () => {
     expect(spy).toReturnWith(
       expect.objectContaining({
         mobile: '(max-width: 768px)',
+        tablet: {
+          minWidth: 769,
+          operator: 'and',
+          maxWidth: 1023
+        },
         desktop: '(min-width: 1024px)'
       })
     );
