@@ -1,7 +1,8 @@
 import React from 'react';
+import IPatternObject from '../interfaces/patternObject';
 
 interface IPatterns {
-  [key: string]: string;
+  [key: string]: string | IPatternObject;
 }
 interface Props {
   patterns: IPatterns;
