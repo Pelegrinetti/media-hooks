@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import dts from 'rollup-plugin-dts';
 import esbuild from 'rollup-plugin-esbuild';
+import analizer from 'rollup-plugin-analyzer';
 
 const bundle = (config) => ({
   ...config,
@@ -10,7 +11,7 @@ const bundle = (config) => ({
 
 export default [
   bundle({
-    plugins: [esbuild()],
+    plugins: [esbuild(), analizer()],
     output: [
       {
         dir: 'lib',
