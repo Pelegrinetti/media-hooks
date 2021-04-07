@@ -1,14 +1,24 @@
 import { useState, useEffect } from 'react';
+import objectToQuery from '../utils/objectToQuery';
+import IPatternObject from '../interfaces/patternObject';
 
 interface ICustomMediaConfig {
   default: boolean | undefined;
 }
 
-const useCustomMedia = (query: string, config?: ICustomMediaConfig): boolean | undefined => {
+const useCustomMedia = (query: string | IPatternObject, config?: ICustomMediaConfig): boolean | undefined => {
   const [matches, setMatches] = useState(config?.default);
   const setMatchesValue = () => {
     if (typeof window.matchMedia === 'function') {
-      setMatches(window.matchMedia(query).matches);
+      if (typeof query === 'string') {
+        setMatches(window.matchMedia(query).matches);
+
+        return;
+      }
+
+      const queryAsString = objectToQuery(query);
+
+      setMatches(window.matchMedia(queryAsString).matches);
     }
   };
 
