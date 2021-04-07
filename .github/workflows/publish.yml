@@ -2,6 +2,8 @@ name: Media Hooks CI/CD
 
 on:
   push:
+    branches:
+      - master
     tags:
       - 'v*.*.*'
 
