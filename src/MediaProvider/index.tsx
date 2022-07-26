@@ -4,7 +4,7 @@ import IPatternObject from '../interfaces/patternObject';
 interface IPatterns {
   [key: string]: string | IPatternObject;
 }
-interface Props {
+interface Props extends React.PropsWithChildren {
   patterns: IPatterns;
 }
 
