@@ -4,8 +4,10 @@ import setupMatchMedia from '../__tests__/setupMatchMedia';
 import MediaProvider from '../MediaProvider';
 import useMedia from './index';
 
+type MatchMedia = (query: string) => MediaQueryList;
+
 afterEach(() => {
-  window.matchMedia = undefined;
+  window.matchMedia = undefined as unknown as MatchMedia;
 });
 
 describe('useMedia()', () => {
